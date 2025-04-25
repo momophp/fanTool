@@ -46,3 +46,43 @@ func StringToTime(s string) time.Time {
 func StringToUnixTime(s string) int64 {
 	return StringToTime(s).Unix()
 }
+
+func AddDaysUnixTime(days int, timeUnix int64) int64 {
+	if days == 0 {
+		days = 1
+	}
+	if timeUnix == 0 {
+		timeUnix = time.Now().Unix()
+	}
+	return time.Unix(timeUnix, 0).AddDate(0, 0, days).Unix()
+}
+
+func AddMonthsUnixTime(months int, timeUnix int64) int64 {
+	if months == 0 {
+		months = 1
+	}
+	if timeUnix == 0 {
+		timeUnix = time.Now().Unix()
+	}
+	return time.Unix(timeUnix, 0).AddDate(0, months, 0).Unix()
+}
+
+func AddYearsUnixTime(years int, timeUnix int64) int64 {
+	if years == 0 {
+		years = 1
+	}
+	if timeUnix == 0 {
+		timeUnix = time.Now().Unix()
+	}
+	return time.Unix(timeUnix, 0).AddDate(years, 0, 0).Unix()
+}
+
+func AddHoursUnixTime(hours int, timeUnix int64) int64 {
+	if hours == 0 {
+		hours = 1
+	}
+	if timeUnix == 0 {
+		timeUnix = time.Now().Unix()
+	}
+	return time.Unix(timeUnix, 0).Add(time.Duration(hours) * time.Hour).Unix()
+}
